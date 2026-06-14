@@ -4,39 +4,39 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-using namespace std;
+#include <cstdlib>
 
 namespace MyUtilityLib {
-    int RandomNumber(int From, int To) {
+    inline int RandomNumber(int From, int To) {
         return rand() % (To - From + 1) + From;
     }
 
-    string EncryptText(string txt, short Key) {
-        for (int i = 0; i < txt.length(); i++)
+    inline std::string EncryptText(std::string txt, short Key) {
+        for (size_t i = 0; i < txt.length(); i++)
             txt[i] += Key;
         return txt;
     }
 
-    string DecryptText(string txt, short Key) {
-        for (int i = 0; i < txt.length(); i++)
+    inline std::string DecryptText(std::string txt, short Key) {
+        for (size_t i = 0; i < txt.length(); i++)
             txt[i] -= Key;
         return txt;
     }
 
-    void PrintInvertedNumberPattern(int Number) {
+    inline void PrintInvertedNumberPattern(int Number) {
         for (int i = Number; i >= 1; i--) {
-            for (int j = 1; j <= i; j++) cout << i;
-            cout << "\n";
+            for (int j = 1; j <= i; j++) std::cout << i;
+            std::cout << "\n";
         }
     }
 
-    bool GuessPassword(string Password) {
-        string word = "";
+    inline bool GuessPassword(std::string Password) {
+        std::string word = "";
         int Counter = 0;
         for (int i = 65; i <= 90; i++) {
             for (int j = 65; j <= 90; j++) {
                 for (int k = 65; k <= 90; k++) {
-                    word = string(1, char(i)) + char(j) + char(k);
+                    word = std::string(1, char(i)) + char(j) + char(k);
                     Counter++;
                     if (word == Password) {
                         std::cout << "Found after " << Counter << " trials.\n";
@@ -48,16 +48,14 @@ namespace MyUtilityLib {
         return false;
     }
 
-    string GetSystemDateTime() {
+    inline std::string GetSystemDateTime() {
         time_t t = time(0);
         tm* now = localtime(&t);
-
-        // تنسيق: YYYY-MM-DD | HH:MM:SS
-        return to_string(now->tm_year + 1900) + "-" +
-            to_string(now->tm_mon + 1) + "-" +
-            to_string(now->tm_mday) + " | " +
-            to_string(now->tm_hour) + ":" +
-            to_string(now->tm_min) + ":" +
-            to_string(now->tm_sec);
+        return std::to_string(now->tm_year + 1900) + "-" +
+            std::to_string(now->tm_mon + 1) + "-" +
+            std::to_string(now->tm_mday) + " | " +
+            std::to_string(now->tm_hour) + ":" +
+            std::to_string(now->tm_min) + ":" +
+            std::to_string(now->tm_sec);
     }
 }
