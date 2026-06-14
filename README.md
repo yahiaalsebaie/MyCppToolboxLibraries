@@ -71,17 +71,15 @@ This iteration has been rigorously developed to meet production-grade C++ clean 
     
 - **Safe Iterator-Based Deletions:** File mutations (updates and deletions) utilize dynamic iterator re-assignment to actively protect against dangling pointers, iterator invalidation, or memory leaks during runtime vector resizing.
     
+---
 
 ## 🛠️ Running the Automated Test Suite
 
-To run the comprehensive stress tests and verify compatibility with your specific compiler and hardware environment, build and execute the root `main.cpp`:
+To run the comprehensive stress tests, compile the core testing file from the repository root directory using the following commands:
 
+```bash
+# Compile from the root targeting the actual source file layout
+g++ -std=c++17 MyCppToolbox/MyCppToolbox.cpp -I MyCppToolbox/include -o Tester.exe
 
-
-```Bash
-# Compile using C++17 standard or higher
-g++ -std=c++17 main.cpp -o Tester
-
-# Execute the test binary
-./Tester
-```
+# Execute the test binary on Windows
+.\Tester.exe
