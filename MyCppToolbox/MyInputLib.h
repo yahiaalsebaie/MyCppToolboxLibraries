@@ -2,93 +2,77 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-using namespace std;
+#include <limits> // for numeric_limits
 
 namespace MyInputLib {
-    /*int ReadNumber(string Message = "Please enter a number: ") {
+    inline int ReadNumber(std::string Message = "Please enter a number: ") {
         int Number = 0;
-        cout << Message;
-        cin >> Number;
-        return Number;
-    }*/
-    int ReadNumber(string Message = "Please enter a number: ") {
-        int Number = 0;
-        cout << Message;
-        cin >> Number;
+        std::cout << Message;
+        std::cin >> Number;
 
-        while (cin.fail()) //Validation..
-        {
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-            cout << "Invalid Number, Enter a valid one : ";
-            cin >> Number;
+        while (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid Number, Enter a valid one : ";
+            std::cin >> Number;
         }
-
-
         return Number;
     }
 
-    float ReadFloatNumber(string Message) {
+    inline float ReadFloatNumber(std::string Message) {
         float Number = 0;
-        cout << Message;
-        cin >> Number;
+        std::cout << Message;
+        std::cin >> Number;
         return Number;
     }
 
-    int ReadPositiveNumber(string Message) {
+    inline int ReadPositiveNumber(std::string Message) {
         int Number = 0;
         do {
-            cout << Message;
-            cin >> Number;
+            std::cout << Message;
+            std::cin >> Number;
         } while (Number <= 0);
         return Number;
     }
 
-    int ReadNumberInRange(int From, int To, string Message = "Enter number: ") {
+    inline int ReadNumberInRange(int From, int To, std::string Message = "Enter number: ") {
         int Number = 0;
         do {
-            cout << Message << " [" << From << " to " << To << "]: ";
-            cin >> Number;
+            std::cout << Message << " [" << From << " to " << To << "]: ";
+            std::cin >> Number;
         } while (Number < From || Number > To);
         return Number;
     }
 
-    string ReadText(string Message) {
-        string Text = "";
-        cout << Message;
-        getline(cin >> ws, Text); // ws to skip whitespaces
+    inline std::string ReadText(std::string Message) {
+        std::string Text = "";
+        std::cout << Message;
+        std::getline(std::cin >> std::ws, Text);
         return Text;
     }
 
-    string ReadPassword() {
-        string Password = "";
-        cout << "Enter 3-Letter Password: ";
-        cin >> Password;
+    inline std::string ReadPassword() {
+        std::string Password = "";
+        std::cout << "Enter 3-Letter Password: ";
+        std::cin >> Password;
         return Password;
     }
 
-    void ReadVectorNumbers(vector<int>& vNumbers)
-    {
+    inline void ReadVectorNumbers(std::vector<int>& vNumbers) {
         char AddMore = 'y';
-
-        do
-        {
+        do {
             int Number;
-            cout << "Enter a Number: "; cin >> Number;
-            while (cin.fail()) //Validation..
-            {
-                cin.clear();
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-                cout << "Invalid Number, Enter a valid one : ";
-                cin >> Number;
+            std::cout << "Enter a Number: ";
+            std::cin >> Number;
+            while (std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Invalid Number, Enter a valid one : ";
+                std::cin >> Number;
             }
             vNumbers.push_back(Number);
-            cout << "Do you want to add more Numbers? : ";
-            cin >> AddMore;
+            std::cout << "Do you want to add more Numbers? : ";
+            std::cin >> AddMore;
         } while (AddMore == 'y' || AddMore == 'Y' || AddMore == '1');
-
     }
 }
