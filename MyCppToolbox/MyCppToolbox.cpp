@@ -175,14 +175,13 @@ int main() {
     std::cout << " [INFO] Skipping interactive cin validation to ensure automated test flow.\n";
     std::cout << " [HINT] Un-comment the section below in main.cpp to manual-test cin.fail() recovery.\n";
 
-    /*
-    // لإجراء فحص حي لـ Validation المدخلات، قم بإلغاء التعليق هنا:
+    
     std::vector<int> userNumbers;
     std::cout << "-> Test Input Validation (Try entering characters/letters to test robustness):\n";
     MyInputLib::ReadVectorNumbers(userNumbers);
     std::cout << "Successfully captured numbers: ";
     MyVectorLib::PrintVictorNumbers(userNumbers);
-    */
+    
 
     std::cout << "\n==================================================\n";
     std::cout << "   ALL CORE MODULE TESTS COMPLETED SUCCESSFULLY   \n";
