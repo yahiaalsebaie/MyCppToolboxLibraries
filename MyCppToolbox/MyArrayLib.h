@@ -1,26 +1,27 @@
 #pragma once
 #include <iostream>
-#include "MyMathLib.h" // For CheckPrime
+#include <utility> // من أجل std::swap النظيفة
+#include <cstdlib> // من أجل rand
 
 namespace MyArrayLib {
-    void AddArrayElement(int Number, int arr[100], int& arrLength) {
+    inline void AddArrayElement(int Number, int arr[100], int& arrLength) {
         arr[arrLength] = Number;
         arrLength++;
     }
 
-    void PrintArray(int arr[100], int arrLength) {
+    inline void PrintArray(const int arr[100], int arrLength) {
         for (int i = 0; i < arrLength; i++)
             std::cout << arr[i] << " ";
         std::cout << "\n";
     }
 
-    bool IsNumberInArray(int arr[100], int NumberToSearch, int arrLength) {
+    inline bool IsNumberInArray(const int arr[100], int NumberToSearch, int arrLength) {
         for (int i = 0; i < arrLength; i++)
             if (arr[i] == NumberToSearch) return true;
         return false;
     }
 
-    void CopyDistinctNumbersToArray(int arrSource[100], int arrDest[100], int srcLen, int& destLen) {
+    inline void CopyDistinctNumbersToArray(const int arrSource[100], int arrDest[100], int srcLen, int& destLen) {
         destLen = 0;
         for (int i = 0; i < srcLen; i++) {
             if (!IsNumberInArray(arrDest, arrSource[i], destLen)) {
@@ -29,17 +30,15 @@ namespace MyArrayLib {
         }
     }
 
-    bool IsPalindromeArray(int arr[100], int arrLength) {
+    inline bool IsPalindromeArray(const int arr[100], int arrLength) {
         for (int i = 0; i < arrLength / 2; i++)
             if (arr[i] != arr[arrLength - i - 1]) return false;
         return true;
     }
 
-    void ShuffleArray(int arr[100], int arrLength) {
+    inline void ShuffleArray(int arr[100], int arrLength) {
         for (int i = 0; i < arrLength; i++) {
             std::swap(arr[i], arr[rand() % arrLength]);
         }
     }
-
-
 }
