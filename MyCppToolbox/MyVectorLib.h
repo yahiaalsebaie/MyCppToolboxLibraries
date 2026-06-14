@@ -1,131 +1,100 @@
 ﻿#pragma once
-#pragma once
 #include <iostream>
-#include "MyInputLib.h"
 #include <vector>
 #include <string>
 #include <fstream>
 
-namespace MyVectorLib
-{
+namespace MyVectorLib {
+    inline void PrintVictorNumbers(const std::vector<int>& vNumbers) {
+        for (const int& n : vNumbers)
+            std::cout << n << " ";
+        std::cout << std::endl;
+    }
 
-	void PrintVictorNumbers(vector<int>& const vNumbers)
-	{
-		for (const int& n : vNumbers)
-			cout << n << " ";
-		cout << endl;
-	}
+    inline void PrintFileContent(std::string FileName) {
+        std::fstream myFile;
+        myFile.open(FileName, std::ios::in);
 
-	void PrintFileContent(string FileName)
-	{
-		fstream myFile;
-		myFile.open(FileName, ios::in);//Read (input) mode.
+        if (myFile.is_open()) {
+            std::string line;
+            while (std::getline(myFile, line)) {
+                std::cout << line << std::endl;
+            }
+            myFile.close();
+        }
+    }
 
-		if (myFile.is_open())
-		{
-			string line;
-			while (getline(myFile, line))
-			{
-				cout << line << endl;
-			}
-			myFile.close();
-		}
-	}
+    inline void LoadDataFromFileToVector(std::string FileName, std::vector<std::string>& vFileContent) {
+        std::fstream myFile;
+        myFile.open(FileName, std::ios::in);
 
-	void LoadDataFromFileToVector(string FileName, vector<string>& vFileContent)
-	{
-		fstream myFile;
-		myFile.open(FileName, ios::in);//Read (input) mode.
+        if (myFile.is_open()) {
+            std::string line;
+            while (std::getline(myFile, line)) {
+                vFileContent.push_back(line);
+            }
+            myFile.close();
+        }
+    }
 
-		if (myFile.is_open())
-		{
-			string line;
-			while (getline(myFile, line))
-			{
-				vFileContent.push_back(line);
-			}
-			myFile.close();
-		}
-	}
+    inline void SaveVectorToFile(std::string FileName, const std::vector<std::string>& vFileContent) {
+        std::fstream myFile;
+        myFile.open(FileName, std::ios::out);
 
-	void SaveVectorToFile(string FileName, const vector<string>& vFileContent)
-	{
-		fstream myFile;
-		myFile.open(FileName, ios::out);
+        if (myFile.is_open()) {
+            for (const std::string& line : vFileContent) {
+                if (line != "")
+                    myFile << line << std::endl;
+            }
+            myFile.close();
+        }
+    }
 
-		if (myFile.is_open())
-		{
+    inline void DeleteVectorFromFile(std::string FileName, std::string Record) {
+        std::vector<std::string> vFileContent;
+        LoadDataFromFileToVector(FileName, vFileContent);
 
-			for (const string& line : vFileContent)
-			{
-				if (line != "")
-					myFile << line << endl;
-			}
+        for (std::string& line : vFileContent) {
+            if (line == Record) line = "";
+        }
+        SaveVectorToFile(FileName, vFileContent);
+    }
 
-			myFile.close();
-		}
-	}
+    inline void DeleteVectorFromFileUsingIterator(std::string FileName, std::string Record) {
+        std::vector<std::string> vFileContent;
+        LoadDataFromFileToVector(FileName, vFileContent);
 
-	void DeleteVectorFromFile(string FileName, string Record)
-	{
-		vector <string> vFileContent;
-		LoadDataFromFileToVector(FileName, vFileContent);
+        for (std::vector<std::string>::iterator iter = vFileContent.begin(); iter != vFileContent.end(); ) {
+            if (*iter == Record) {
+                iter = vFileContent.erase(iter);
+            }
+            else {
+                iter++;
+            }
+        }
+        SaveVectorToFile(FileName, vFileContent);
+    }
 
-		for (string& line : vFileContent)
-		{
-			if (line == Record) line = "";
-		}
-		SaveVectorToFile(FileName, vFileContent);
-	}
+    inline void UpdateRecordInFile(std::string FileName, std::string Record, std::string updateTo) {
+        std::vector<std::string> vFileContent;
+        LoadDataFromFileToVector(FileName, vFileContent);
 
-	void DeleteVectorFromFileUsingIterator(string FileName, string Record)
-	{
-		vector<string> vFileContent;
-		LoadDataFromFileToVector(FileName, vFileContent);
+        for (std::string& line : vFileContent) {
+            if (line == Record) line = updateTo;
+        }
+        SaveVectorToFile(FileName, vFileContent);
+    }
 
-		// استخدام الـ Iterator للحذف الفعلي من الفيكتور
-		for (vector<string>::iterator iter = vFileContent.begin(); iter != vFileContent.end(); )
-		{
-			if (*iter == Record) {
-				iter = vFileContent.erase(iter); // يحذف العنصر ويرجع المؤشر للي بعده
-			}
-			else {
-				iter++;
-			}
-		}
+    inline void UpdateRecordInFileUsingIterator(std::string FileName, std::string Record, std::string updateTo) {
+        std::vector<std::string> vFileContent;
+        LoadDataFromFileToVector(FileName, vFileContent);
 
-		SaveVectorToFile(FileName, vFileContent);
-	}
-	void UpdateRecordInFile(string FileName, string Record, string updateTo)
-	{
-		vector <string> vFileContent;
-		LoadDataFromFileToVector(FileName, vFileContent);
-
-		for (string& line : vFileContent)
-		{
-			if (line == Record) line = updateTo;
-		}
-		SaveVectorToFile(FileName, vFileContent);
-	}
-
-	void UpdateRecordInFileUsingIterator(string FileName, string Record, string updateTo)
-	{
-		vector<string> vFileContent;
-		LoadDataFromFileToVector(FileName, vFileContent);
-
-		// استخدام Iterator للبحث عن أول عنصر مطابق
-		vector<string>::iterator it;
-		for (it = vFileContent.begin(); it != vFileContent.end(); ++it)
-		{
-			if (*it == Record)
-			{
-				*it = updateTo; // تعديل القيمة باستخدام الـ Pointer (Dereferencing)
-				break; // توقف بمجرد التعديل (أسرع للأداء)
-			}
-		}
-
-		SaveVectorToFile(FileName, vFileContent);
-	}
-
-
+        for (std::vector<std::string>::iterator it = vFileContent.begin(); it != vFileContent.end(); ++it) {
+            if (*it == Record) {
+                *it = updateTo;
+                break;
+            }
+        }
+        SaveVectorToFile(FileName, vFileContent);
+    }
 }
