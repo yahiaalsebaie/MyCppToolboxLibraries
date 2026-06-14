@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MyCppToolbox/MyCppToolbox.vcxproj" />
+  <Project Path="MyCppToolbox/MyCppToolbox.vcxproj" Id="cb491a35-3a48-4ba8-9451-2d14a84e70a3" />
 </Solution>

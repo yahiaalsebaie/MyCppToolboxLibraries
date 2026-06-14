@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyArrayLib.h" />
+    <ClInclude Include="myCpp5AllRawFuncLib.h" />
     <ClInclude Include="MyInputLib.h" />
     <ClInclude Include="MyMathLib.h" />
     <ClInclude Include="MyUtilityLib.h" />

@@ -35,5 +35,8 @@
     <ClInclude Include="MyVectorLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="myCpp5AllRawFuncLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
