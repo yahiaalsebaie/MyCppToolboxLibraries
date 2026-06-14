@@ -83,3 +83,5 @@ g++ -std=c++17 MyCppToolbox/MyCppToolbox.cpp -I MyCppToolbox/include -o Tester.e
 
 # Execute the test binary on Windows
 .\Tester.exe
+```
+Note for Linux/macOS users: Ensure correct slash direction (/) and use ./Tester to execute the binary.
