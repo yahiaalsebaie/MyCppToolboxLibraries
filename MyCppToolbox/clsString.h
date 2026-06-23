@@ -615,7 +615,7 @@ public:
 		vector<string> vString = SplitString(s1, delim);
 		if (vString.empty()) return "";
 		string s2 = "";
-		for (short i = vString.size() - 1; i >= 0; i--)
+		for (int i = vString.size() - 1; i >= 0; i--)
 		{
 			s2 += vString[i] + delim;
 		}
