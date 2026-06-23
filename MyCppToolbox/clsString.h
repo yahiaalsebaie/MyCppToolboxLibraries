@@ -41,7 +41,7 @@ public:
     char GetCharValue() {
         return _charValue;
     }
-    __declspec(property(get = GetCharValue, put = SetCharValue)) string charValue;
+    __declspec(property(get = GetCharValue, put = SetCharValue)) char charValue;
 
 /*    static short CountWords(string S1)
     {
