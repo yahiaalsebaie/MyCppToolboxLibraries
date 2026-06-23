@@ -426,7 +426,7 @@ public:
 	}
 
 
-	static short CountWords(string& s1) 
+	static short CountWords(string s1) 
 	{
 		string delim = " ", sWord = "";
 		short pos = 0, count = 0;
