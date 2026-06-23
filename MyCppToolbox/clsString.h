@@ -35,6 +35,13 @@ public:
     }
 
     __declspec(property(get = GetValue, put = SetValue)) string Value;
+     void SetCharValue(char charValue) {
+        _charValue = charValue;
+    }
+    char GetCharValue() {
+        return _charValue;
+    }
+    __declspec(property(get = GetCharValue, put = SetCharValue)) string charValue;
 
 /*    static short CountWords(string S1)
     {
@@ -241,12 +248,12 @@ public:
 		return CountLettersCapitalAndSmall(_sValue);
 	}
 	enum enCountLetters {
-		SmallLetters = 0, CapitalLetters = 1, PunctLetters = 2, Digits = 3, Spaces = 4, AllLeters = 5
+		SmallLetters = 0, CapitalLetters = 1, PunctLetters = 2, Digits = 3, Spaces = 4, AllLetters = 5
 	};
-	static short CountLetters(string& s1, enCountLetters WhatToCount = enCountLetters::AllLeters)
+	static short CountLetters(string& s1, enCountLetters WhatToCount = enCountLetters::AllLetters)
 	{
 
-		if (WhatToCount == enCountLetters::AllLeters) return s1.length();
+		if (WhatToCount == enCountLetters::AllLetters) return s1.length();
 		short Counter = 0;
 
 		/* using for loop
@@ -286,7 +293,7 @@ public:
 			for (const char& c : s1)
 				if (c == ' ') Counter++;
 			break;
-		case AllLeters:
+		case AllLetters:
 			return s1.length();
 		default:
 			return s1.length();
@@ -294,7 +301,7 @@ public:
 
 		return Counter;
 	}
-	short CountLetters(enCountLetters WhatToCount = enCountLetters::AllLeters)
+	short CountLetters(enCountLetters WhatToCount = enCountLetters::AllLetters)
 	{
 		return CountLetters(_sValue, WhatToCount);
 	}
@@ -416,7 +423,7 @@ public:
 	}
 
 
-	static short CountWords(string s1)
+	static short CountWords(string& s1) 
 	{
 		string delim = " ", sWord = "";
 		short pos = 0, count = 0;
