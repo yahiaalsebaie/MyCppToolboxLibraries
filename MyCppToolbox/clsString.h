@@ -225,11 +225,14 @@ public:
 		}
 		return s;
 	}
-	string InvertAllStringLettersCase()
+	string GetInvertAllStringLettersCase()
 	{
 		return InvertAllStringLettersCase(_sValue);
 	}
-
+	void InvertAllStringLettersCase()
+	{
+		_sValue = InvertAllStringLettersCase(_sValue);
+	}
 	//GetCapitalAndSmallLettersCount
 	static pair<int, int> CountLettersCapitalAndSmall(const string& s1)
 	{
