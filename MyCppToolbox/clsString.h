@@ -253,7 +253,7 @@ public:
 	enum enCountLetters {
 		SmallLetters = 0, CapitalLetters = 1, PunctLetters = 2, Digits = 3, Spaces = 4, AllLetters = 5
 	};
-	static short CountLetters(string& s1, enCountLetters WhatToCount = enCountLetters::AllLetters)
+	static short CountLetters(const string& s1, enCountLetters WhatToCount = enCountLetters::AllLetters)
 	{
 
 		if (WhatToCount == enCountLetters::AllLetters) return s1.length();
