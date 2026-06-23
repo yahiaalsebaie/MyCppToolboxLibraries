@@ -123,8 +123,18 @@ public:
 		}
 		return s1;
 	}
-	string UpperFirstLetterOfEachWord()
+	void  UpperFirstLetterOfEachWord()
 	{
+		// no need to return value , this function will directly update the object value  
+		_sValue = UpperFirstLetterOfEachWord(_sValue);
+	}
+
+	/*string UpperFirstLetterOfEachWord()
+	{ // هنا بتعود بنسخة من الكائن مما يتيح استخدام النص الأصلي في عمليات أخرى لاحقاً.
+		return UpperFirstLetterOfEachWord(_sValue);
+	}*/
+	string GetUpperFirstLetterOfEachWord() 
+	{// الاسم يوضح أنها تعود بنسخة ولا تغير الأصل
 		return UpperFirstLetterOfEachWord(_sValue);
 	}
 
@@ -141,9 +151,16 @@ public:
 		}
 		return s1;
 	}
-	string lowerFirstLetterOfEachWord()
+	/*string lowerFirstLetterOfEachWord()
 	{
 		return lowerFirstLetterOfEachWord(_sValue);
+	}*/
+	void  lowerFirstLetterOfEachWord()
+	{
+
+
+		// no need to return value , this function will directly update the object value  
+		_sValue = lowerFirstLetterOfEachWord(_sValue);
 	}
 
 
@@ -154,11 +171,15 @@ public:
 			s1[i] = toupper(s1[i]);
 		return s1;
 	}
-	 string UpperAllString()
+/*	 string UpperAllString()
 	{
 		 return UpperAllString(_sValue);
-	}
+	}*/
 
+	void  UpperAllString()
+	{
+		_sValue = UpperAllString(_sValue);
+	}
 
 	static string lowerAllString(string s1)
 	{
@@ -167,9 +188,16 @@ public:
 			s1[i] = tolower(s1[i]);
 		return s1;
 	}
+	/*
 	string lowerAllString()
 	{
 		return lowerAllString(_sValue);
+	}
+	*/
+	
+	void  LowerAllString()
+	{
+		_sValue = lowerAllString(_sValue);
 	}
 
 
