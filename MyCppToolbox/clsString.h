@@ -330,7 +330,7 @@ public:
 		return CountLetterCharacter(_sValue, c1, MatchCase);
 	}
 
-	static bool isVowel(char& ch)
+	static bool isVowel(char ch)
 	{
 		ch = tolower(ch);
 
