@@ -434,9 +434,14 @@ public:
 	{
 		return SplitString(_sValue, Separator);
 	}
+
 	void Print()
 	{
 		cout << _sValue << endl;
+	}
+	string PrintToString()
+	{
+		return _sValue;
 	}
 
 	static void PrintVectorString(const vector<string>& vString)
