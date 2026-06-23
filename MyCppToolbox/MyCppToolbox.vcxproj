@@ -145,6 +145,9 @@
     <ClInclude Include="clsString.h" />
     <ClInclude Include="MyArrayLib.h" />
     <ClInclude Include="myCpp5AllRawFuncLib.h" />
+    <ClInclude Include="MyDateLib.h" />
+    <ClInclude Include="MyGlobalTypes.h" />
+    <ClInclude Include="MyHijriDateLib.h" />
     <ClInclude Include="MyInputLib.h" />
     <ClInclude Include="MyMathLib.h" />
     <ClInclude Include="MyUtilityLib.h" />

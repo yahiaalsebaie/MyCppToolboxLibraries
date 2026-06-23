@@ -41,5 +41,14 @@
     <ClInclude Include="clsString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MyDateLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGlobalTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHijriDateLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
