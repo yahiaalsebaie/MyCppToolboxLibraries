@@ -513,6 +513,7 @@ public:
 
 	static string TrimRight(string S1)
 	{
+		if (S1.empty()) return "";
 		for (short i = S1.length() - 1; i >= 0; i--)
 		{
 			if (S1[i] != ' ') // أول ما يقابل حرف من ناحية اليمين
@@ -554,6 +555,7 @@ public:
 
 	static string TrimRightUsingErase(string& s1)
 	{
+		if (s1.empty()) return "";
 		for (short i = s1.length() - 1; i >= 0; i--)
 		{
 			if (s1[i] != ' ') return s1.erase(i + 1, s1.length());// تعديل مباشر في الذاكرة
