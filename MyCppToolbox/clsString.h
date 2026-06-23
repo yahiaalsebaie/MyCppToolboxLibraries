@@ -582,6 +582,7 @@ public:
 
 	static string JoinString(const vector<string>& vString, string Delim)
 	{
+		if (vString.empty()) return "";
 		string s1 = "";
 		for (const string& s : vString)
 			s1 += s + Delim;
