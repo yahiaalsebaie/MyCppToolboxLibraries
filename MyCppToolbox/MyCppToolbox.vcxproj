@@ -142,6 +142,7 @@
     <ClCompile Include="MyCppToolbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clsString.h" />
     <ClInclude Include="MyArrayLib.h" />
     <ClInclude Include="myCpp5AllRawFuncLib.h" />
     <ClInclude Include="MyInputLib.h" />

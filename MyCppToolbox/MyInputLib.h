@@ -58,7 +58,7 @@ namespace MyInputLib {
         return Password;
     }
 
-    inline void ReadVectorNumbers(std::vector<int>& vNumbers) {
+    inline static void ReadVectorNumbers(std::vector<int>& vNumbers) {
         char AddMore = 'y';
         do {
             int Number;

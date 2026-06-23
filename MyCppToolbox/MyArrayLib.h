@@ -4,12 +4,12 @@
 #include <cstdlib> // من أجل rand
 
 namespace MyArrayLib {
-    inline void AddArrayElement(int Number, int arr[100], int& arrLength) {
+    inline static void AddArrayElement(int Number, int arr[100], int& arrLength) {
         arr[arrLength] = Number;
         arrLength++;
     }
 
-    inline void PrintArray(const int arr[100], int arrLength) {
+    inline static void PrintArray(const int arr[100], int arrLength) {
         for (int i = 0; i < arrLength; i++)
             std::cout << arr[i] << " ";
         std::cout << "\n";
@@ -21,7 +21,7 @@ namespace MyArrayLib {
         return false;
     }
 
-    inline void CopyDistinctNumbersToArray(const int arrSource[100], int arrDest[100], int srcLen, int& destLen) {
+    inline static void CopyDistinctNumbersToArray(const int arrSource[100], int arrDest[100], int srcLen, int& destLen) {
         destLen = 0;
         for (int i = 0; i < srcLen; i++) {
             if (!IsNumberInArray(arrDest, arrSource[i], destLen)) {
@@ -36,7 +36,7 @@ namespace MyArrayLib {
         return true;
     }
 
-    inline void ShuffleArray(int arr[100], int arrLength) {
+    inline static void ShuffleArray(int arr[100], int arrLength) {
         for (int i = 0; i < arrLength; i++) {
             std::swap(arr[i], arr[rand() % arrLength]);
         }

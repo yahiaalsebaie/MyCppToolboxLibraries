@@ -23,7 +23,7 @@ namespace MyUtilityLib {
         return txt;
     }
 
-    inline void PrintInvertedNumberPattern(int Number) {
+    inline static void PrintInvertedNumberPattern(int Number) {
         for (int i = Number; i >= 1; i--) {
             for (int j = 1; j <= i; j++) std::cout << i;
             std::cout << "\n";

@@ -5,13 +5,13 @@
 #include <fstream>
 
 namespace MyVectorLib {
-    inline void PrintVictorNumbers(const std::vector<int>& vNumbers) {
+    inline static void PrintVictorNumbers(const std::vector<int>& vNumbers) {
         for (const int& n : vNumbers)
             std::cout << n << " ";
         std::cout << std::endl;
     }
 
-    inline void PrintFileContent(std::string FileName) {
+    inline static void PrintFileContent(std::string FileName) {
         std::fstream myFile;
         myFile.open(FileName, std::ios::in);
 
@@ -24,7 +24,7 @@ namespace MyVectorLib {
         }
     }
 
-    inline void LoadDataFromFileToVector(std::string FileName, std::vector<std::string>& vFileContent) {
+    inline static void LoadDataFromFileToVector(std::string FileName, std::vector<std::string>& vFileContent) {
         std::fstream myFile;
         myFile.open(FileName, std::ios::in);
 
@@ -37,7 +37,7 @@ namespace MyVectorLib {
         }
     }
 
-    inline void SaveVectorToFile(std::string FileName, const std::vector<std::string>& vFileContent) {
+    inline static void SaveVectorToFile(std::string FileName, const std::vector<std::string>& vFileContent) {
         std::fstream myFile;
         myFile.open(FileName, std::ios::out);
 
@@ -50,7 +50,7 @@ namespace MyVectorLib {
         }
     }
 
-    inline void DeleteVectorFromFile(std::string FileName, std::string Record) {
+    inline static void DeleteVectorFromFile(std::string FileName, std::string Record) {
         std::vector<std::string> vFileContent;
         LoadDataFromFileToVector(FileName, vFileContent);
 
@@ -60,7 +60,7 @@ namespace MyVectorLib {
         SaveVectorToFile(FileName, vFileContent);
     }
 
-    inline void DeleteVectorFromFileUsingIterator(std::string FileName, std::string Record) {
+    inline static void DeleteVectorFromFileUsingIterator(std::string FileName, std::string Record) {
         std::vector<std::string> vFileContent;
         LoadDataFromFileToVector(FileName, vFileContent);
 
@@ -75,7 +75,7 @@ namespace MyVectorLib {
         SaveVectorToFile(FileName, vFileContent);
     }
 
-    inline void UpdateRecordInFile(std::string FileName, std::string Record, std::string updateTo) {
+    inline static void UpdateRecordInFile(std::string FileName, std::string Record, std::string updateTo) {
         std::vector<std::string> vFileContent;
         LoadDataFromFileToVector(FileName, vFileContent);
 
@@ -85,7 +85,7 @@ namespace MyVectorLib {
         SaveVectorToFile(FileName, vFileContent);
     }
 
-    inline void UpdateRecordInFileUsingIterator(std::string FileName, std::string Record, std::string updateTo) {
+    inline static void UpdateRecordInFileUsingIterator(std::string FileName, std::string Record, std::string updateTo) {
         std::vector<std::string> vFileContent;
         LoadDataFromFileToVector(FileName, vFileContent);
 
