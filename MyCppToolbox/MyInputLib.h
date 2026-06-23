@@ -1,78 +1,180 @@
+
 #pragma once
 #include <iostream>
 #include <string>
 #include <vector>
-#include <limits> // for numeric_limits
+#include <limits>
 
-namespace MyInputLib {
-    inline int ReadNumber(std::string Message = "Please enter a number: ") {
+using namespace std;
+
+namespace MyInputLib
+{
+    // -----------------------------------------------------------------------
+    //  Integer - with full cin-fail recovery
+    // -----------------------------------------------------------------------
+    int ReadNumber(string Message = "Please enter a number: ")
+    {
         int Number = 0;
-        std::cout << Message;
-        std::cin >> Number;
-
-        while (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid Number, Enter a valid one : ";
-            std::cin >> Number;
+        cout << Message;
+        cin >> Number;
+        while (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid Number, Enter a valid one: ";
+            cin >> Number;
         }
         return Number;
     }
 
-    inline float ReadFloatNumber(std::string Message) {
+    // -----------------------------------------------------------------------
+    //  Float
+    // -----------------------------------------------------------------------
+    float ReadFloatNumber(string Message)
+    {
         float Number = 0;
-        std::cout << Message;
-        std::cin >> Number;
+        cout << Message;
+        cin >> Number;
         return Number;
     }
 
-    inline int ReadPositiveNumber(std::string Message) {
+    // -----------------------------------------------------------------------
+    //  Positive integer (> 0)
+    // -----------------------------------------------------------------------
+    int ReadPositiveNumber(string Message)
+    {
         int Number = 0;
-        do {
-            std::cout << Message;
-            std::cin >> Number;
+        do
+        {
+            cout << Message;
+            cin >> Number;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid Number, Enter a valid one: ";
+                cin >> Number;
+            }
         } while (Number <= 0);
         return Number;
     }
 
-    inline int ReadNumberInRange(int From, int To, std::string Message = "Enter number: ") {
+    // -----------------------------------------------------------------------
+    //  Unsigned long long - rejects negative sign
+    // -----------------------------------------------------------------------
+    unsigned long long ReadUnsignedLongPositiveNumber(
+        bool   isIncludeZero = false,
+        string Message = "Please enter a number: ")
+    {
+        unsigned long long Number = 0;
+        do
+        {
+            cout << Message;
+            cin >> ws;
+            if (cin.peek() == '-')
+                cin.setstate(ios::failbit);
+            else
+                cin >> Number;
+
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid Number, Enter a valid one: ";
+                cin >> ws;
+                if (cin.peek() == '-')
+                    cin.setstate(ios::failbit);
+                else
+                    cin >> Number;
+            }
+        } while (isIncludeZero ? (Number < 0) : (Number <= 0));
+        return Number;
+    }
+
+    // -----------------------------------------------------------------------
+    //  Long long positive
+    // -----------------------------------------------------------------------
+    long long ReadLongPositiveNumber(
+        bool   isIncludeZero = false,
+        string Message = "Please enter a number: ")
+    {
+        long long Number = 0;
+        do
+        {
+            cout << Message;
+            cin >> Number;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid Number, Enter a valid one: ";
+                cin >> Number;
+            }
+        } while (isIncludeZero ? (Number < 0) : (Number <= 0));
+        return Number;
+    }
+
+    // -----------------------------------------------------------------------
+    //  Integer within [From, To] inclusive
+    // -----------------------------------------------------------------------
+    int ReadNumberInRange(
+        int    From,
+        int    To,
+        string Message = "Enter number: ",
+        bool   isIncludedRange = true)
+    {
         int Number = 0;
-        do {
-            std::cout << Message << " [" << From << " to " << To << "]: ";
-            std::cin >> Number;
+        do
+        {
+            if (isIncludedRange)
+                cout << Message << " [" << From << " to " << To << "]: ";
+            else
+                cout << Message;
+
+            cin >> Number;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid Number, Enter a valid one: ";
+                cin >> Number;
+            }
         } while (Number < From || Number > To);
         return Number;
     }
 
-    inline std::string ReadText(std::string Message) {
-        std::string Text = "";
-        std::cout << Message;
-        std::getline(std::cin >> std::ws, Text);
+    // -----------------------------------------------------------------------
+    //  Full-line string
+    // -----------------------------------------------------------------------
+    string ReadText(string Message)
+    {
+        string Text = "";
+        cout << Message;
+        getline(cin >> ws, Text);
         return Text;
     }
 
-    inline std::string ReadPassword() {
-        std::string Password = "";
-        std::cout << "Enter 3-Letter Password: ";
-        std::cin >> Password;
-        return Password;
-    }
-
-    inline static void ReadVectorNumbers(std::vector<int>& vNumbers) {
+    // -----------------------------------------------------------------------
+    //  Fill a vector of integers interactively
+    // -----------------------------------------------------------------------
+    void ReadVectorNumbers(vector<int>& vNumbers)
+    {
         char AddMore = 'y';
-        do {
+        do
+        {
             int Number;
-            std::cout << "Enter a Number: ";
-            std::cin >> Number;
-            while (std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid Number, Enter a valid one : ";
-                std::cin >> Number;
+            cout << "Enter a Number: ";
+            cin >> Number;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid Number, Enter a valid one: ";
+                cin >> Number;
             }
             vNumbers.push_back(Number);
-            std::cout << "Do you want to add more Numbers? : ";
-            std::cin >> AddMore;
-        } while (AddMore == 'y' || AddMore == 'Y' || AddMore == '1');
+            cout << "Add more Numbers? (y/n): ";
+            cin >> AddMore;
+        } while (AddMore == 'y' || AddMore == 'Y');
     }
 }
