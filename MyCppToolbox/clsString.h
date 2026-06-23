@@ -196,7 +196,7 @@ public:
 	}
 
 	//GetCapitalAndSmallLettersCount
-	static pair<int, int> CountLettersCapitalAndSmall(string s1)
+	static pair<int, int> CountLettersCapitalAndSmall(const string& s1)
 	{
 		int Capital = 0, small = 0;
 		for (short i = 0; i < s1.length(); i++)
@@ -215,7 +215,7 @@ public:
 	enum enCountLetters {
 		SmallLetters = 0, CapitalLetters = 1, PunctLetters = 2, Digits = 3, Spaces = 4, AllLeters = 5
 	};
-	static short CountLetters(string s1, enCountLetters WhatToCount = enCountLetters::AllLeters)
+	static short CountLetters(string& s1, enCountLetters WhatToCount = enCountLetters::AllLeters)
 	{
 
 		if (WhatToCount == enCountLetters::AllLeters) return s1.length();
@@ -292,7 +292,7 @@ public:
 		return CountLetterCharacter(_sValue, c1, MatchCase);
 	}
 
-	static bool isVowel(char ch)
+	static bool isVowel(char& ch)
 	{
 		ch = tolower(ch);
 
@@ -499,27 +499,31 @@ public:
 
 		for (short i = 0; i < s1.length(); i++)
 		{
-			if (s1[i] != ' ') return s1.erase(0, i);
+			if (s1[i] != ' ') return s1.erase(0, i); // تعديل مباشر في الذاكرة
 		}
 		// لو وصل هنا معناه إن الجملة كلها مسافات
 		return s1.erase(0, s1.length()); // عشان لو الجملة فراغات فقط ترجع صفر مسافات
 	}
-	string TrimLeftUsingErase()
-	{
-		return TrimLeftUsingErase(_sValue);
+	void TrimLeftUsingErase()
+	{ // الدالة تعود بـ void لأن الـ _sValue تم تنظيفها داخلياً بنجاح ^_^
+		TrimLeftUsingErase(_sValue);
 	}
 
 	static string TrimRightUsingErase(string& s1)
 	{
 		for (short i = s1.length() - 1; i >= 0; i--)
 		{
-			if (s1[i] != ' ') return s1.erase(i + 1, s1.length());
+			if (s1[i] != ' ') return s1.erase(i + 1, s1.length());// تعديل مباشر في الذاكرة
 		}
 		return s1.erase(0, s1.length()); // عشان لو الجملة فراغات فقط ترجع صفر مسافات
 	}
-	string TrimRightUsingErase()
+	/*string TrimRightUsingErase()
 	{
 		return TrimRightUsingErase(_sValue);
+	}*/
+	void TrimRightUsingErase()
+	{
+		TrimRightUsingErase(_sValue);
 	}
 
 	static string TrimAllUsingErase(string& s1)
@@ -527,9 +531,10 @@ public:
 		TrimLeftUsingErase(s1);
 		return TrimRightUsingErase(s1);
 	}
-	string TrimAllUsingErase()
+	void TrimAllUsingErase()
 	{
-		return TrimAllUsingErase(_sValue);
+		TrimLeftUsingErase(_sValue);  
+		TrimRightUsingErase(_sValue); 
 	}
 
 	static string JoinString(const vector<string>& vString, string Delim)

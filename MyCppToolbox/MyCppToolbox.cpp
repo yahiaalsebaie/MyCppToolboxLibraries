@@ -30,8 +30,13 @@ int main()
     
     string arr[] = { "Yahia", "Alsebaie" };
     clsString MyString("-"); // Here string is the delime
-    cout << MyString.JoinString(arr, 2); // If i put it all, it will make overloading exeption
+    cout << MyString.JoinString(arr, 2) << endl; // If i put it all, it will make overloading exeption
     cout << clsString::JoinString(arr, 2, "-") << endl;
+
+    clsString MyString2("   Ahmed");
+    MyString2.TrimLeftUsingErase(); 
+    MyString2.Print();
+
 
     return 0;
 };
