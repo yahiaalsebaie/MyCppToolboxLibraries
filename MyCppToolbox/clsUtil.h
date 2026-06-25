@@ -264,7 +264,6 @@ public:
         for (int i = 0; i < NumberOfTabs; i++)
             t += "\t";
 
-        cout << t;
         return t;
     }
     static string  Spaces(short NumberOfSpaces)
@@ -274,7 +273,6 @@ public:
         for (int i = 0; i < NumberOfSpaces; i++)
             s += " ";
 
-        cout << s;
         return s;
     }
     static void PrintTabs(short NumberOfTabs)
