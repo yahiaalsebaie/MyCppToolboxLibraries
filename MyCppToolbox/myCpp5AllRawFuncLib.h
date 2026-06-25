@@ -728,6 +728,11 @@ void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
 
     for (int i = 0; i < arrLength; i++)
         arr[i] = RandomNumber(1, 100);
+}
+void FillArrayWithRandomWords(string arr[100], int arrLength, enCharType CharType, short Wordlength)
+{
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = GenerateWord(CharType, Wordlength);
 
 }
 
