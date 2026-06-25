@@ -76,6 +76,13 @@ public:
 
     static char GetRandomCharacter(enCharType CharType)
     {
+        if (CharType == MixChars)
+        {
+            //Capital/Samll/Digits only
+            CharType = (enCharType)RandomNumber(1, 3);
+
+        }
+
         switch (CharType)
         {
         case SmallLetter:
@@ -86,8 +93,6 @@ public:
             return (char)RandomNumber(33, 47);
         case Digit:
             return (char)RandomNumber(48, 57);
-        case MixChars:
-            return (char)RandomNumber(33, 122);
        // default:
          //   return (char)RandomNumber(33, 122);
         }
