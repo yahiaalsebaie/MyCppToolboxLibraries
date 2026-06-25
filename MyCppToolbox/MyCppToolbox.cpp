@@ -1,45 +1,26 @@
-
 #include <iostream>
-#include "clsString.h"
-
-using namespace std;
-
+#include "clsPeriod.h"
 
 int main()
 
 {
 
-    // Here where i test a clsString.h after trans MyStringLib to class
-    clsString String1;
-    clsString String2("Mohammed");
+    clsPeriod Period1(clsDate(1, 1, 2025), clsDate(10, 1, 2026));
+    Period1.Print();
 
-    String1.Value = "Ali Ahmed";
+    cout << "\n";
 
-    cout << "String1 = " << String1.Value << endl;
-    cout << "String2 = " << String2.Value << endl;
+    clsPeriod Period2(clsDate(3, 1, 2025), clsDate(5, 1, 2026));
+    Period2.Print();
 
-    cout << "Number of vowels in \'" << String1.PrintToString() << "\' is : " << String1.CountVowels() << endl;
 
-    cout << "Number of words: " << String1.CountWords() << endl;
+    //You can check like this
+    cout << Period1.IsOverLapWith(Period2) << endl;
 
-    cout << "Number of words: " << String1.CountWords("Fadi Ahmed Rateb Omer") << endl;
 
-    cout << "Number of words: " <<
-        clsString::CountWords("Yahia Ahmed AlSebaie") << endl;
-
-    
-    
-    string arr[] = { "Yahia", "Alsebaie" };
-    clsString MyString("-"); // Here string is the delime
-    cout << MyString.JoinString(arr, 2) << endl; // If i put it all, it will make overloading exception.
-    cout << clsString::JoinString(arr, 2, "-") << endl;
-
-    clsString MyString2("   Ahmed");
-    MyString2.TrimLeftUsingErase(); 
-    MyString2.Print();
-  
+    //Also you can call the static method and send period 1 and period 2
+    cout << clsPeriod::IsOverlapPeriods(Period1, Period2) << endl;
 
 
     return 0;
-};
-
+}

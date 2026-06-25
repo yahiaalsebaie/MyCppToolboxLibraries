@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Libraries">
+      <UniqueIdentifier>{2b73f960-939c-47dc-b884-33eb6189c12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Classes">
+      <UniqueIdentifier>{0c305349-d97f-49c4-9f45-217adbed8b54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyCppToolbox.cpp">
@@ -21,34 +27,43 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyArrayLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyInputLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyMathLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyUtilityLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyVectorLib.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Libraries</Filter>
     </ClInclude>
     <ClInclude Include="myCpp5AllRawFuncLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="clsString.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Libraries</Filter>
     </ClInclude>
     <ClInclude Include="MyDateLib.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Libraries</Filter>
     </ClInclude>
     <ClInclude Include="MyGlobalTypes.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Libraries</Filter>
     </ClInclude>
     <ClInclude Include="MyHijriDateLib.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="MyInputLib.h">
+      <Filter>Header Files\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMathLib.h">
+      <Filter>Header Files\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="MyUtilityLib.h">
+      <Filter>Header Files\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVectorLib.h">
+      <Filter>Header Files\Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="clsString.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="clsGlobalTypes.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="clsDate.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="clsPeriod.h">
+      <Filter>Header Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

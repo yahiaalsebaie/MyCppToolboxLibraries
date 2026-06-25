@@ -446,7 +446,7 @@ public:
 		return CountWords(_sValue);
 	}
 
-	static vector<string> SplitString(string S1, string Separator)
+	static vector<string> Split(string S1, string Separator)
 	{
 		vector<string> vString;
 		short pos = 0;
@@ -468,9 +468,9 @@ public:
 		}
 		return vString;
 	}
-	vector<string> SplitString(string Separator)
+	vector<string> Split(string Separator)
 	{
-		return SplitString(_sValue, Separator);
+		return Split(_sValue, Separator);
 	}
 
 	void Print()
@@ -612,7 +612,7 @@ public:
 
 	static string ReverseWordsInString(string s1, string delim)
 	{
-		vector<string> vString = SplitString(s1, delim);
+		vector<string> vString = Split(s1, delim);
 		if (vString.empty()) return "";
 		string s2 = "";
 		for (int i = vString.size() - 1; i >= 0; i--)
@@ -632,7 +632,7 @@ public:
 
 	static vector<string> ReverseWordsInVector(string s1, string delim = " ")
 	{
-		vector<string> vString = SplitString(s1, " ");
+		vector<string> vString = Split(s1, " ");
 		string s2 = "";
 		vector<string> v2;
 		for (int i = vString.size() - 1; i >= 0; i--)
@@ -665,7 +665,7 @@ public:
 
 	static string ReplaceStringUsingIterator(string s1, string OldWord, string updateTo, string Separator = " ", bool matchCase = true)
 	{
-		vector<string> vString = SplitString(s1, Separator);
+		vector<string> vString = Split(s1, Separator);
 		vector<string>::iterator iter;
 		for (iter = vString.begin(); iter != vString.end(); iter++)
 		{
@@ -688,7 +688,7 @@ public:
 
 	static string ReplaceStringUsingSplit(string s1, string OldWord, string updateTo, string Separator = " ", bool matchCase = true)
 	{
-		vector <string >vString = SplitString(s1, Separator);
+		vector <string >vString = Split(s1, Separator);
 		for (string& s : vString)
 		{
 			if (matchCase)
