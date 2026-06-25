@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include "clsDate.h"
 
 class clsUtil
 {
@@ -106,10 +107,10 @@ public:
         }
         return word;
     }
-    static string GenerateKey(enCharType CharType = CapitalLetter, short Length = 4)
+    static string GenerateKey(enCharType CharType = CapitalLetter, short NumberOfParts = 4)
     {
         string RandomKey = "";
-        for (short i = 1; i < Length; i++)
+        for (short i = 1; i < NumberOfParts; i++)
         {
             RandomKey += GenerateWord(CharType) + '-';
         }
@@ -256,27 +257,33 @@ public:
     }
 
     //Tabs and Spaces
-    static string  Tabs(short NumberOfTabs)
+    static string Tabs(short NumberOfTabs)
     {
         string t = "";
 
-        for (int i = 1; i < NumberOfTabs; i++)
-        {
+        for (int i = 0; i < NumberOfTabs; i++)
             t += "\t";
-            cout << t;
-        }
+
+        cout << t;
         return t;
     }
     static string  Spaces(short NumberOfSpaces)
     {
-        string t = "";
+        string s = "";
 
-        for (int i = 1; i < NumberOfSpaces; i++)
-        {
-            t += " ";
-            cout << t;
-        }
-        return t;
+        for (int i = 0; i < NumberOfSpaces; i++)
+            s += " ";
+
+        cout << s;
+        return s;
+    }
+    static void PrintTabs(short NumberOfTabs)
+    {
+        cout << Tabs(NumberOfTabs);
+    }
+    static void PrintSpaces(short NumberOfSpaces)
+    {
+        cout << Spaces(NumberOfSpaces);
     }
 
 

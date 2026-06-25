@@ -91,6 +91,7 @@ int main()
     }
 
     cout << "\nText1 " << clsUtil::Tabs(5) << "Text2\n";
+    cout << "\nText1 " << clsUtil::Spaces(5) << "Text2\n";
 
     const short EncryptionKey = 2; //this is the key.
 
