@@ -567,13 +567,13 @@ public:
 	{
 		//this will take care of negative diff
 		int Days = 0;
-		short SawpFlagValue = 1;
+		short SwapFlagValue = 1;
 
 		if (!IsDate1BeforeDate2(Date1, Date2))
 		{
 			//Swap Dates 
 			SwapDates(Date1, Date2);
-			SawpFlagValue = -1;
+			SwapFlagValue = -1;
 
 		}
 
@@ -583,7 +583,7 @@ public:
 			Date1 = AddOneDay(Date1);
 		}
 
-		return IncludeEndDay ? ++Days * SawpFlagValue : Days * SawpFlagValue;
+		return IncludeEndDay ? ++Days * SwapFlagValue : Days * SwapFlagValue;
 	}
 
 	int GetDifferenceInDays(clsDate Date2, bool IncludeEndDay = false)

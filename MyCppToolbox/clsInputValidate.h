@@ -9,6 +9,8 @@ using namespace std;
 class clsInputValidate
 
 {
+public:
+
     // -----------------------------------------------------------------------
     //  Integer - with full cin-fail recovery
     // -----------------------------------------------------------------------
@@ -117,16 +119,12 @@ class clsInputValidate
     // -----------------------------------------------------------------------
     //  Integer within [From, To] inclusive
     // -----------------------------------------------------------------------
-    static int ReadNumberInRange(
-        int    From,
-        int    To,
-        string Message = "Enter number: ",
-        bool   isIncludedRange = true)
+    static int ReadNumberInRange(int From,int To, string Message = "Enter number: ", bool   isIncludedRangeMessage = true)
     {
         int Number = 0;
         do
         {
-            if (isIncludedRange)
+            if (isIncludedRangeMessage)
                 cout << Message << " [" << From << " to " << To << "]: ";
             else
                 cout << Message;
@@ -177,5 +175,43 @@ class clsInputValidate
             cin >> AddMore;
         } while (AddMore == 'y' || AddMore == 'Y');
     }
+
+
+// -----------------------------------------------------------------------
+//  is Number Between 2 numbers within [From, To] inclusive
+// -----------------------------------------------------------------------
+
+    static bool IsNumberBetween(int Number, int From, int To, bool IncludedRangedNumbers = false)
+    {
+        if (IncludedRangedNumbers)
+        {
+            if (Number >= From && Number <= To) return true;
+            else return false;
+        }
+        else if (Number > From && Number < To) return true;
+        else return false;
+    }
+    static bool IsNumberBetween(float Number, float From, float To, bool IncludedRangedNumbers = false)
+    {
+        if (IncludedRangedNumbers)
+        {
+            if (Number >= From && Number <= To) return true;
+            else return false;
+        }
+        else if (Number > From && Number < To) return true;
+        else return false;
+    }
+    static bool IsNumberBetween(double Number, double From, double To, bool IncludedRangedNumbers = false)
+    {
+        if (IncludedRangedNumbers)
+        {
+            if (Number >= From && Number <= To) return true;
+            else return false;
+        }
+        else if (Number > From && Number < To) return true;
+        else return false;
+    }
+
+
 };
 

@@ -2,10 +2,15 @@
 #include "clsPeriod.h"
 #include "clsString.h"
 #include "clsUtil.h"
+#include "clsInputValidate.h"
 
 int main()
 
 {
+
+    cout << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
+    cout << clsInputValidate::IsNumberBetween(5.5, 1.3, 10.8) << endl;
+
 
 
     cout << "\n\n----------------------------\n\n";
