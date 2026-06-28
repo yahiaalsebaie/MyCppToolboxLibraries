@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <limits>
+#include "clsUtil.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -183,35 +185,33 @@ public:
 
     static bool IsNumberBetween(int Number, int From, int To, bool IncludedRangedNumbers = false)
     {
-        if (IncludedRangedNumbers)
-        {
-            if (Number >= From && Number <= To) return true;
-            else return false;
-        }
-        else if (Number > From && Number < To) return true;
-        else return false;
+        if (From > To) clsUtil::Swap(From, To);
+        return IncludedRangedNumbers ? (Number >= From && Number <= To)
+            : (Number > From && Number < To);
+        /*if (IncludedRangedNumbers)
+            return (Number >= From && Number <= To);
+
+        return (Number > From && Number < To);*/
     }
     static bool IsNumberBetween(float Number, float From, float To, bool IncludedRangedNumbers = false)
     {
-        if (IncludedRangedNumbers)
-        {
-            if (Number >= From && Number <= To) return true;
-            else return false;
-        }
-        else if (Number > From && Number < To) return true;
-        else return false;
+        if (From > To) clsUtil::Swap(From, To);
+        return IncludedRangedNumbers ? (Number >= From && Number <= To)
+            : (Number > From && Number < To);
     }
     static bool IsNumberBetween(double Number, double From, double To, bool IncludedRangedNumbers = false)
     {
-        if (IncludedRangedNumbers)
-        {
-            if (Number >= From && Number <= To) return true;
-            else return false;
-        }
-        else if (Number > From && Number < To) return true;
-        else return false;
+        if (From > To) clsUtil::Swap(From, To);
+        return IncludedRangedNumbers ? (Number >= From && Number <= To)
+            : (Number > From && Number < To);
     }
 
+    static bool IsDateBetween(clsDate systemDate, clsDate Date1, clsDate Date2)
+    {
+        if (clsDate::IsDate1AfterDate2(Date1, Date2)) clsUtil::Swap(Date1, Date2);
+
+        return (clsDate::IsDate1BeforeDate2(systemDate, Date2) && (clsDate::IsDate1AfterDate2(systemDate, Date1)));
+    }
 
 };
 

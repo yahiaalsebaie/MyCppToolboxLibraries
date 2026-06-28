@@ -2,14 +2,43 @@
 #include "clsPeriod.h"
 #include "clsString.h"
 #include "clsUtil.h"
+#include "clsDate.h"
 #include "clsInputValidate.h"
 
 int main()
 
 {
 
-    cout << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
-    cout << clsInputValidate::IsNumberBetween(5.5, 1.3, 10.8) << endl;
+    //Input Validation Class
+    //IsNumberBetween
+    cout << "Is Number 5 Between 1 and 10 ? : " << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
+    cout << "Is Number 5 Between 10 and 1 ? : " << clsInputValidate::IsNumberBetween(5, 10, 1) << endl;
+    cout << "Is Number 50 Between 1 and 10 ? : " << clsInputValidate::IsNumberBetween(50, 1, 10) << endl;
+    cout << "Is Number 5.5 Between 1.3 and 10.8 ? : " << clsInputValidate::IsNumberBetween(5.5, 1.3, 10.8) << endl;
+
+    //IsDateBetween
+    cout << "Today's system date is : " << clsDate::GetSystemDateToString() << endl;
+    cout << "IsDateBetween (1, 1, 2026) and (31, 12, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(1, 1, 2026), clsDate(31, 12, 2026)) << endl;
+    cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026),clsDate(1, 1, 2026)) << endl;
+
+   /* cout << "\nPlease Enter a Number:\n";
+    int x = clsInputValidate::ReadIntNumber("Invalid Number, Enter again:\n");
+    cout << "x=" << x;
+
+    cout << "\nPlease Enter a Number between 1 and 5:\n";
+    int y = clsInputValidate::ReadIntNumberBetween(1, 5, "Number is not within range, enter again:\n");
+    cout << "y=" << y;
+
+    cout << "\nPlease Enter a Double Number:\n";
+    double a = clsInputValidate::ReadDblNumber("Invalid Number, Enter again:\n");
+    cout << "a=" << a;
+
+    cout << "\nPlease Enter a Double Number between 1 and 5:\n";
+    double b = clsInputValidate::ReadDblNumberBetween(1, 5, "Number is not within range, enter again:\n");
+    cout << "b=" << b;
+
+    cout << endl << clsInputValidate::IsValideDate(clsDate(35, 12, 2022)) << endl;
+*/
 
 
 

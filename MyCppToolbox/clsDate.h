@@ -90,6 +90,11 @@ public:
 	{
 		cout << DateToString() << endl;
 	}
+	static string GetSystemDateToString()
+	{
+		clsDate Date;
+		 return to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+	}
 
 	static clsDate GetSystemDate()
 	{
@@ -384,7 +389,7 @@ public:
 		return;
 	}
 
-	static short DaysFromTheBeginingOfTheYear(short Day, short Month, short Year)
+	static short DaysFromTheBeginningOfTheYear(short Day, short Month, short Year)
 	{
 
 
@@ -400,7 +405,7 @@ public:
 		return TotalDays;
 	}
 
-	short DaysFromTheBeginingOfTheYear()
+	short DaysFromTheBeginningOfTheYear()
 	{
 
 
@@ -450,7 +455,7 @@ public:
 	{
 
 
-		short RemainingDays = Days + DaysFromTheBeginingOfTheYear(_Day, _Month, _Year);
+		short RemainingDays = Days + DaysFromTheBeginningOfTheYear(_Day, _Month, _Year);
 		short MonthDays = 0;
 
 		_Month = 1;
@@ -595,7 +600,7 @@ public:
 	{
 		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
 	}
-	//above no need to have nonstatic function for the object because it does not depend on any data from it.
+	//above no need to have non static function for the object because it does not depend on any data from it.
 
 	static clsDate IncreaseDateByOneWeek(clsDate& Date)
 	{
@@ -1071,7 +1076,7 @@ public:
 		return CalculateBusinessDays(DateFrom, DateTo);
 
 	}
-	//above method is eough , no need to have method for the object
+	//above method is enough , no need to have method for the object
 
 	static clsDate CalculateVacationReturnDate(clsDate DateFrom, short VacationDays)
 	{

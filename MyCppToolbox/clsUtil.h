@@ -214,6 +214,13 @@ public:
         A = B;       // Copy the value of B into A.
         B = Temp;    // Copy the value of Temp (original A) into B.
     }
+    static void Swap(float& A, float& B)
+    {
+        float Temp;    // Temporary variable to hold the value of A.
+        Temp = A;    // Save the value of A in Temp.
+        A = B;       // Copy the value of B into A.
+        B = Temp;    // Copy the value of Temp (original A) into B.
+    }
     static  void Swap(double& A, double& B)
     {
         double Temp;
@@ -253,7 +260,6 @@ public:
     static  void Swap(clsDate& A, clsDate& B)
     {
         clsDate::SwapDates(A, B);
-
     }
 
     //Tabs and Spaces
