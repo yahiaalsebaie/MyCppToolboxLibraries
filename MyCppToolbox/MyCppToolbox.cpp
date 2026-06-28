@@ -21,24 +21,24 @@ int main()
     cout << "IsDateBetween (1, 1, 2026) and (31, 12, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(1, 1, 2026), clsDate(31, 12, 2026)) << endl;
     cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026),clsDate(1, 1, 2026)) << endl;
 
-   /* cout << "\nPlease Enter a Number:\n";
-    int x = clsInputValidate::ReadIntNumber("Invalid Number, Enter again:\n");
-    cout << "x=" << x;
+    //ReadNumber
+    int intNum = clsInputValidate::ReadNumber("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
+    cout << " Int Number = " << intNum << endl;
 
-    cout << "\nPlease Enter a Number between 1 and 5:\n";
-    int y = clsInputValidate::ReadIntNumberBetween(1, 5, "Number is not within range, enter again:\n");
-    cout << "y=" << y;
+   /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/
+    int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5);
+    cout << "Number In Range =" << NumberInRange;
 
-    cout << "\nPlease Enter a Double Number:\n";
-    double a = clsInputValidate::ReadDblNumber("Invalid Number, Enter again:\n");
-    cout << "a=" << a;
+    double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n","Invalid Number, Enter again : \n");
+    cout << "Double Number =" << dblNumber;
 
-    cout << "\nPlease Enter a Double Number between 1 and 5:\n";
-    double b = clsInputValidate::ReadDblNumberBetween(1, 5, "Number is not within range, enter again:\n");
-    cout << "b=" << b;
+    string msg  = "\nPlease Enter a Double Number between 1 and 5:\n";
+    double dblNumberInRange = clsInputValidate::ReadDblNumberBetween(1, 5, msg, "Number is not within range, enter again:\n");
+    cout << "Double Number In Range =" << dblNumberInRange << endl;
+    
+   cout << "(29, 2, 2000) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2000)) << endl;
+   cout << "(29, 2, 2001) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2001)) << endl;
 
-    cout << endl << clsInputValidate::IsValideDate(clsDate(35, 12, 2022)) << endl;
-*/
 
 
 

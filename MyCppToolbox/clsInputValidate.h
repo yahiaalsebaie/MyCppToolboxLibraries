@@ -16,7 +16,7 @@ public:
     // -----------------------------------------------------------------------
     //  Integer - with full cin-fail recovery
     // -----------------------------------------------------------------------
-    static int ReadNumber(string Message = "Please enter a number: ")
+    static int ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
         int Number = 0;
         cout << Message;
@@ -25,7 +25,7 @@ public:
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid Number, Enter a valid one: ";
+            cout << ErrorMessage;
             cin >> Number;
         }
         return Number;
@@ -34,11 +34,37 @@ public:
     // -----------------------------------------------------------------------
     //  Float
     // -----------------------------------------------------------------------
-    static float ReadFloatNumber(string Message)
+    static float ReadFloatNumber(string Message, string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         float Number = 0;
         cout << Message;
         cin >> Number;
+        while (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << ErrorMessage;
+            cin >> Number;
+        }
+        return Number;
+    }
+    // -----------------------------------------------------------------------
+    //  Double
+    // -----------------------------------------------------------------------
+    static double ReadDblNumber(string Message, string ErrorMessage = "Invalid Number, Enter a valid one : ")
+    {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        float Number = 0;
+        cout << Message;
+        cin >> Number;
+        while (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << ErrorMessage;
+            cin >> Number;
+        }
         return Number;
     }
 
@@ -47,6 +73,7 @@ public:
     // -----------------------------------------------------------------------
     static int ReadPositiveNumber(string Message)
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
         do
         {
@@ -70,6 +97,7 @@ public:
         bool   isIncludeZero = false,
         string Message = "Please enter a number: ")
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         unsigned long long Number = 0;
         do
         {
@@ -102,6 +130,7 @@ public:
         bool   isIncludeZero = false,
         string Message = "Please enter a number: ")
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         long long Number = 0;
         do
         {
@@ -121,22 +150,47 @@ public:
     // -----------------------------------------------------------------------
     //  Integer within [From, To] inclusive
     // -----------------------------------------------------------------------
-    static int ReadNumberInRange(int From,int To, string Message = "Enter number: ", bool   isIncludedRangeMessage = true)
+
+    static int ReadNumberInRange(int From,int To, string InputMessage = "Enter number: " , string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
         do
         {
-            if (isIncludedRangeMessage)
-                cout << Message << " [" << From << " to " << To << "]: ";
+            if (AutoRangeMessage)
+                cout << InputMessage << " [" << From << " to " << To << "]: ";
             else
-                cout << Message;
+                cout << InputMessage;
 
             cin >> Number;
             while (cin.fail())
             {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid Number, Enter a valid one: ";
+                cout << ErrorMessage;
+                cin >> Number;
+            }
+        } while (Number < From || Number > To);
+        return Number;
+    }
+    //Double Number 
+    static double ReadDblNumberBetween(double From, double To, string InputMessage = "Enter number: " , string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
+    {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        double Number = 0;
+        do
+        {
+            if (AutoRangeMessage)
+                cout << InputMessage << " [" << From << " to " << To << "]: ";
+            else
+                cout << InputMessage;
+
+            cin >> Number;
+            while (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << ErrorMessage;
                 cin >> Number;
             }
         } while (Number < From || Number > To);
@@ -148,6 +202,7 @@ public:
     // -----------------------------------------------------------------------
     static string ReadText(string Message)
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         string Text = "";
         cout << Message;
         getline(cin >> ws, Text);
@@ -211,6 +266,11 @@ public:
         if (clsDate::IsDate1AfterDate2(Date1, Date2)) clsUtil::Swap(Date1, Date2);
 
         return (clsDate::IsDate1BeforeDate2(systemDate, Date2) && (clsDate::IsDate1AfterDate2(systemDate, Date1)));
+    }
+
+    static	bool IsValidDate(clsDate Date)
+    {
+        return clsDate::IsValidDate(Date);
     }
 
 };
