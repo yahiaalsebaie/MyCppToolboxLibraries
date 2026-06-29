@@ -8,6 +8,9 @@
 int main()
 
 {
+    //Personal Note:
+      //I feel the modifications I made are powerful and transform the code into a true API, but I won't merge the branch from the main one. I'll leave it as is because I'll need the way I created the main master for future projects on the programmingadvices.com map. I might merge the modification when we take the templates lessons because I don't wanna my code to look too different from the map right now(I'm currently at the beginning of course 11). 29-6-2026
+
     //Input Validation Class Using templates<T>
     //IsNumberBetween
     cout << "Is Number 5 Between 1 and 10 ? : " << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;

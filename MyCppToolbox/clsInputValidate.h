@@ -12,6 +12,8 @@ using namespace std;
 class clsInputValidate
 
 {
+    //I feel the modifications I made are powerful and transform the code into a true API, but I won't merge the branch from the main one. I'll leave it as is because I'll need the way I created the main one for future projects on the programmingadvices.com map. I might merge the modification when we take the templates lessons because I don't want my code to look too different from the map right now (I'm currently at the beginning of course 11). 29-6-2026
+
 private:
     static void _PrintMessage(const string& Message)
     {
