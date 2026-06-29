@@ -10,6 +10,14 @@ int main()
 {
 
     //Input Validation Class
+    //IsValid Name, Phone, Email <<Personal information>>
+    if (clsInputValidate::IsValidName(clsInputValidate::ReadText("Enter Your name: "))) 
+        cout << "Valid name\n"; else cout << "Not Valid name\n";
+    if (clsInputValidate::IsValidPhone(clsInputValidate::ReadText("Enter Your Phone Number: "))) 
+        cout << "Valid phone number\n"; else cout << "Not Valid phone number\n";
+    if (clsInputValidate::IsValidEmail(clsInputValidate::ReadText("Enter Your E-Mail: "))) 
+        cout << "Valid e-mail\n"; else cout << "Not Valid e-mail\n";
+
     //IsNumberBetween
     cout << "Is Number 5 Between 1 and 10 ? : " << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
     cout << "Is Number 5 Between 10 and 1 ? : " << clsInputValidate::IsNumberBetween(5, 10, 1) << endl;
