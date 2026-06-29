@@ -30,7 +30,7 @@ int main()
     cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026),clsDate(1, 1, 2026)) << endl;
 
     //ReadNumber
-    int intNum = clsInputValidate::ReadNumber("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
+    int intNum = clsInputValidate::ReadIntNumber("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
     cout << " Int Number = " << intNum << endl;
 
    /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/

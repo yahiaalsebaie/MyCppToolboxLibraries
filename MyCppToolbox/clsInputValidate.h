@@ -19,7 +19,7 @@ public:
     // -----------------------------------------------------------------------
     //  Integer - with full cin-fail recovery
     // -----------------------------------------------------------------------
-    static int ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
+    static int ReadIntNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
     //    cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
