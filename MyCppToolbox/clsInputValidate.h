@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <limits>
 #include "clsUtil.h"
@@ -11,88 +12,45 @@ using namespace std;
 class clsInputValidate
 
 {
+private:
+    static void _PrintMessage(const string& Message)
+    {
+        if (Message != "") cout << Message;
+    }
+
+    template <typename T>
+    static bool _TryParse(const string& Input, T& Value)
+    {
+        stringstream ss(Input);
+
+        ss >> Value;
+
+        return !ss.fail() && ss.eof(); // Not fail AND End Of File.  
+    }
+
+
 public:
 
-    // -----------------------------------------------------------------------
-    //  Integer - with full cin-fail recovery
-    // -----------------------------------------------------------------------
-    static int ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
+    template <typename T>
+    static T ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
-        int Number = 0;
-        cout << Message;
-        cin >> Number;
-        while (cin.fail())
+        T Number{};
+        string Input = "";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        while (true)
         {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << ErrorMessage;
-            cin >> Number;
+            _PrintMessage(Message);
+
+            getline(cin, Input);
+
+            if (_TryParse(Input, Number)) return Number;
+
+            cout << ErrorMessage << endl;
         }
         return Number;
     }
 
-    // -----------------------------------------------------------------------
-    //  Float
-    // -----------------------------------------------------------------------
-    static float ReadFloatNumber(string Message, string ErrorMessage = "Invalid Number, Enter a valid one : ")
-    {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        float Number = 0;
-        cout << Message;
-        cin >> Number;
-        while (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << ErrorMessage;
-            cin >> Number;
-        }
-        return Number;
-    }
-    // -----------------------------------------------------------------------
-    //  Double
-    // -----------------------------------------------------------------------
-    static double ReadDblNumber(string Message, string ErrorMessage = "Invalid Number, Enter a valid one : ")
-    {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        float Number = 0;
-        cout << Message;
-        cin >> Number;
-        while (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << ErrorMessage;
-            cin >> Number;
-        }
-        return Number;
-    }
-
-    // -----------------------------------------------------------------------
-    //  Positive integer (> 0)
-    // -----------------------------------------------------------------------
-    static int ReadPositiveNumber(string Message)
-    {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        int Number = 0;
-        do
-        {
-            cout << Message;
-            cin >> Number;
-            while (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid Number, Enter a valid one: ";
-                cin >> Number;
-            }
-        } while (Number <= 0);
-        return Number;
-    }
-
-    // -----------------------------------------------------------------------
-    //  Unsigned long long - rejects negative sign
-    // -----------------------------------------------------------------------
     static unsigned long long ReadUnsignedLongPositiveNumber(
         bool   isIncludeZero = false,
         string Message = "Please enter a number: ")
@@ -123,9 +81,6 @@ public:
         return Number;
     }
 
-    // -----------------------------------------------------------------------
-    //  Long long positive
-    // -----------------------------------------------------------------------
     static long long ReadLongPositiveNumber(
         bool   isIncludeZero = false,
         string Message = "Please enter a number: ")
@@ -147,116 +102,63 @@ public:
         return Number;
     }
 
-    // -----------------------------------------------------------------------
-    //  Integer within [From, To] inclusive
-    // -----------------------------------------------------------------------
-
-    static int ReadNumberInRange(int From, int To, string InputMessage = "Enter number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
+    template <typename T>
+    static T ReadNumberInRange(T From, T To, string InputMessage = "Enter number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
     {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        int Number = 0;
+        T Number{};
+        if (From > To) clsUtil::Swap(From, To);
+        string Message = "";
+        stringstream ss;
+
         do
         {
-            if (AutoRangeMessage)
-                cout << InputMessage << " [" << From << " to " << To << "]: ";
-            else
-                cout << InputMessage;
 
-            cin >> Number;
-            while (cin.fail())
+            if (AutoRangeMessage)
             {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << ErrorMessage;
-                cin >> Number;
+                ss << InputMessage << " [" << From << " to " << To << "]: ";
+                Message = ss.str();
             }
+            else
+                Message = InputMessage;
+
+            Number = ReadNumber<T>(Message, ErrorMessage);
+
         } while (Number < From || Number > To);
         return Number;
     }
-    //Double Number 
-    static double ReadDblNumberBetween(double From, double To, string InputMessage = "Enter number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
+    
+    static string ReadText(const string& Message = "")
     {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        double Number = 0;
-        do
-        {
-            if (AutoRangeMessage)
-                cout << InputMessage << " [" << From << " to " << To << "]: ";
-            else
-                cout << InputMessage;
+        _PrintMessage(Message);
 
-            cin >> Number;
-            while (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << ErrorMessage;
-                cin >> Number;
-            }
-        } while (Number < From || Number > To);
-        return Number;
-    }
+        string Text;
+        getline(cin, Text);
 
-    // -----------------------------------------------------------------------
-    //  Full-line string
-    // -----------------------------------------------------------------------
-    static string ReadText(string Message)
-    {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        string Text = "";
-        cout << Message;
-        getline(cin >> ws, Text);
         return Text;
     }
-
-    // -----------------------------------------------------------------------
-    //  Fill a vector of integers interactively
-    // -----------------------------------------------------------------------
-    static void ReadVectorNumbers(vector<int>& vNumbers)
+    
+    template <typename T>
+    static void ReadVectorNumbers(vector<T>& vNumbers)
     {
-        char AddMore = 'y';
+        T Number;
+        char AddMore = 'Y';
+
         do
         {
-            int Number;
-            cout << "Enter a Number: ";
-            cin >> Number;
-            while (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid Number, Enter a valid one: ";
-                cin >> Number;
-            }
+            Number = ReadNumber();
             vNumbers.push_back(Number);
-            cout << "Add more Numbers? (y/n): ";
+
+            cout << "Do you want to add more? [Y/N] : ";
             cin >> AddMore;
+
         } while (AddMore == 'y' || AddMore == 'Y');
     }
 
-
-    // -----------------------------------------------------------------------
-    //  is Number Between 2 numbers within [From, To] inclusive
-    // -----------------------------------------------------------------------
-
-    static bool IsNumberBetween(int Number, int From, int To, bool IncludedRangedNumbers = false)
+    template <typename T>
+    static bool IsNumberBetween(T Number, T From, T To, bool IncludedRangedNumbers = false)
     {
         if (From > To) clsUtil::Swap(From, To);
-        return IncludedRangedNumbers ? (Number >= From && Number <= To)
-            : (Number > From && Number < To);
-        /*if (IncludedRangedNumbers)
-            return (Number >= From && Number <= To);
 
-        return (Number > From && Number < To);*/
-    }
-    static bool IsNumberBetween(float Number, float From, float To, bool IncludedRangedNumbers = false)
-    {
-        if (From > To) clsUtil::Swap(From, To);
-        return IncludedRangedNumbers ? (Number >= From && Number <= To)
-            : (Number > From && Number < To);
-    }
-    static bool IsNumberBetween(double Number, double From, double To, bool IncludedRangedNumbers = false)
-    {
-        if (From > To) clsUtil::Swap(From, To);
         return IncludedRangedNumbers ? (Number >= From && Number <= To)
             : (Number > From && Number < To);
     }

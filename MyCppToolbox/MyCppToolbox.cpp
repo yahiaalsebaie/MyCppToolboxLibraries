@@ -8,8 +8,11 @@
 int main()
 
 {
+    //Input Validation Class Using templates<T>
 
-    //Input Validation Class
+
+
+   // //  Input Validation Class
     //IsNumberBetween
     cout << "Is Number 5 Between 1 and 10 ? : " << clsInputValidate::IsNumberBetween(5, 1, 10) << endl;
     cout << "Is Number 5 Between 10 and 1 ? : " << clsInputValidate::IsNumberBetween(5, 10, 1) << endl;
@@ -22,22 +25,28 @@ int main()
     cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026), clsDate(1, 1, 2026)) << endl;
 
     //ReadNumber
-    int intNum = clsInputValidate::ReadNumber("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
+    int intNum = clsInputValidate::ReadNumber<int>("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
     cout << " Int Number = " << intNum << endl;
 
     /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/
     int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5);
     cout << "Number In Range =" << NumberInRange;
+    int Age = clsInputValidate::ReadNumberInRange<int>(18, 60, "Enter Your Age: ", "Invalid Age!\n Enter a valid one: ");
 
-    double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n", "Invalid Number, Enter again : \n");
+    double dblNumber = clsInputValidate::ReadNumber<double>("\nPlease Enter a Double Number : \n", "Invalid Number, Enter again : \n");
     cout << "Double Number =" << dblNumber;
+    /* double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n","Invalid Number, Enter again : \n");
+     cout << "Double Number =" << dblNumber;*/
 
     string msg = "\nPlease Enter a Double Number between 1 and 5:\n";
-    double dblNumberInRange = clsInputValidate::ReadDblNumberBetween(1, 5, msg, "Number is not within range, enter again:\n");
+    double dblNumberInRange = clsInputValidate::ReadNumberInRange<double>(1, 5, msg, "Number is not within range, enter again:\n");
+    /*    double dblNumberInRange = clsInputValidate::ReadDblNumberBetween(1, 5, msg, "Number is not within range, enter again:\n");*/
     cout << "Double Number In Range =" << dblNumberInRange << endl;
+    double Salary = clsInputValidate::ReadNumberInRange<double>(4999.99, 14999.99, "Enter Expected Salary: ");
 
     cout << "(29, 2, 2000) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2000)) << endl;
     cout << "(29, 2, 2001) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2001)) << endl;
+
 
 
 
