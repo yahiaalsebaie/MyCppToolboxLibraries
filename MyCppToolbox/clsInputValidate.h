@@ -265,11 +265,11 @@ public:
             : (Number > From && Number < To);
     }
 
-    static bool IsDateBetween(clsDate systemDate, clsDate Date1, clsDate Date2)
+    static bool IsDateBetween(clsDate Date, clsDate Date1From, clsDate Date2To)
     {
-        if (clsDate::IsDate1AfterDate2(Date1, Date2)) clsUtil::Swap(Date1, Date2);
+        if (clsDate::IsDate1AfterDate2(Date1From, Date2To)) clsUtil::Swap(Date1From, Date2To);
 
-        return (clsDate::IsDate1BeforeDate2(systemDate, Date2) && (clsDate::IsDate1AfterDate2(systemDate, Date1)));
+        return (clsDate::IsDate1BeforeDate2(Date, Date2To) && (clsDate::IsDate1AfterDate2(Date, Date1From)));
     }
 
     static	bool IsValidDate(clsDate Date)
