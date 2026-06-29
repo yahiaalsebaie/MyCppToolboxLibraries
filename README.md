@@ -110,9 +110,7 @@ chmod +x Tester.exe
 
 When executing the test suite (`MyCppToolbox.cpp`), the runtime infrastructure verifies components via the following execution pipe:
 
-C++
-
-```
+```C++
 #include <iostream>
 #include "clsPeriod.h"
 #include "clsString.h"
