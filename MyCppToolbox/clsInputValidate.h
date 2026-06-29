@@ -277,5 +277,42 @@ public:
         return clsDate::IsValidDate(Date);
     }
 
+    static bool IsValidName(const string& Name)
+    {
+        // Using Short Range Based..
+        if (Name.empty()) return false;
+        for (const char& c : Name) // Const and &Ref to avoid making copy or edit.
+        {
+            if (!isalpha(c) && c != ' ') return false;
+        }
+        return true;
+
+        // Or Using Normal Index Based and Array..
+       /* for (short i = 0; i < Name.length(); i++)
+        {
+           const char& c = Name[i];
+            if (!isalpha(c) && c != ' ') return false;
+        }
+        return true;*/
+    }
+    static bool IsValidEmail(const string& Email)
+    {
+        //Return true if email contains '@' and '.' , Otherwise return false.
+        return Email.find('@') != string::npos && Email.find('.') != string::npos;
+    }
+    static bool IsValidPhone(const string& Phone)
+    {
+        //Return true if phone contains only digits, Otherwise return false.
+        //if (Phone.length() != 11) return false; //Egyptian Phone Number Length is 11 Digits, but if you want to allow any length, just remove this line.
+        for (const char& c : Phone)
+        {
+            if (!isdigit(c) && c != '+') return false;
+        }
+        return true;
+    }
+
+    
+
+
 };
 
