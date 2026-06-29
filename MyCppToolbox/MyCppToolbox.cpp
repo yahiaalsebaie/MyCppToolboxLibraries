@@ -19,25 +19,25 @@ int main()
     //IsDateBetween
     cout << "Today's system date is : " << clsDate::GetSystemDateToString() << endl;
     cout << "IsDateBetween (1, 1, 2026) and (31, 12, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(1, 1, 2026), clsDate(31, 12, 2026)) << endl;
-    cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026),clsDate(1, 1, 2026)) << endl;
+    cout << "IsDateBetween (31, 12, 2026) and (1, 1, 2026) : " << clsInputValidate::IsDateBetween(clsDate(), clsDate(31, 12, 2026), clsDate(1, 1, 2026)) << endl;
 
     //ReadNumber
     int intNum = clsInputValidate::ReadNumber("Enter an Integer Number : ", "Invalid Number, Enter again:\n");
     cout << " Int Number = " << intNum << endl;
 
-   /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/
+    /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/
     int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5);
     cout << "Number In Range =" << NumberInRange;
 
-    double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n","Invalid Number, Enter again : \n");
+    double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n", "Invalid Number, Enter again : \n");
     cout << "Double Number =" << dblNumber;
 
-    string msg  = "\nPlease Enter a Double Number between 1 and 5:\n";
+    string msg = "\nPlease Enter a Double Number between 1 and 5:\n";
     double dblNumberInRange = clsInputValidate::ReadDblNumberBetween(1, 5, msg, "Number is not within range, enter again:\n");
     cout << "Double Number In Range =" << dblNumberInRange << endl;
-    
-   cout << "(29, 2, 2000) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2000)) << endl;
-   cout << "(29, 2, 2001) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2001)) << endl;
+
+    cout << "(29, 2, 2000) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2000)) << endl;
+    cout << "(29, 2, 2001) IsValidDate ? : " << clsInputValidate::IsValidDate(clsDate(29, 2, 2001)) << endl;
 
 
 
@@ -194,10 +194,10 @@ int main()
     /*cout << "My Age InDays:" <<
     clsDate::CalculateMyAgeInDays( clsDate(1, 1, 2000) );*/
     //You can try any method at your own..
-    
+
     cout << "\n\n----------------------------\n\n";
 
-        
+
     //---------------
     //clsPeriod test
     clsPeriod Period1(clsDate(1, 1, 2025), clsDate(10, 1, 2026));

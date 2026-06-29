@@ -11,9 +11,6 @@ using namespace std;
 class clsInputValidate
 
 {
-private:
-
-
 public:
 
     // -----------------------------------------------------------------------
@@ -21,7 +18,6 @@ public:
     // -----------------------------------------------------------------------
     static int ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
         cout << Message;
         cin >> Number;
