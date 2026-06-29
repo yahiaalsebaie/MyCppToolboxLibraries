@@ -30,15 +30,15 @@ int main()
 
     /* int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5, "\nPlease Enter a Number between 1 and 5:\n","Number is not within range, enter again:\n");*/
     int NumberInRange = clsInputValidate::ReadNumberInRange(1, 5);
-    cout << "Number In Range =" << NumberInRange;
+    cout << "Number In Range =" << NumberInRange << endl;
     int Age = clsInputValidate::ReadNumberInRange<int>(18, 60, "Enter Your Age: ", "Invalid Age!\n Enter a valid one: ");
 
     double dblNumber = clsInputValidate::ReadNumber<double>("\nPlease Enter a Double Number : \n", "Invalid Number, Enter again : \n");
-    cout << "Double Number =" << dblNumber;
+    cout << "Double Number =" << dblNumber << endl;
     /* double dblNumber = clsInputValidate::ReadDblNumber("\nPlease Enter a Double Number : \n","Invalid Number, Enter again : \n");
      cout << "Double Number =" << dblNumber;*/
 
-    string msg = "\nPlease Enter a Double Number between 1 and 5:\n";
+    string msg = "Please Enter a Double Number between 1 and 5:";
     double dblNumberInRange = clsInputValidate::ReadNumberInRange<double>(1, 5, msg, "Number is not within range, enter again:\n");
     /*    double dblNumberInRange = clsInputValidate::ReadDblNumberBetween(1, 5, msg, "Number is not within range, enter again:\n");*/
     cout << "Double Number In Range =" << dblNumberInRange << endl;

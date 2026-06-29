@@ -36,8 +36,6 @@ public:
     {
         T Number{};
         string Input = "";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         while (true)
         {
             _PrintMessage(Message);
@@ -108,13 +106,13 @@ public:
         T Number{};
         if (From > To) clsUtil::Swap(From, To);
         string Message = "";
-        stringstream ss;
 
         do
         {
 
             if (AutoRangeMessage)
             {
+        stringstream ss;
                 ss << InputMessage << " [" << From << " to " << To << "]: ";
                 Message = ss.str();
             }
@@ -122,6 +120,9 @@ public:
                 Message = InputMessage;
 
             Number = ReadNumber<T>(Message, ErrorMessage);
+
+            if (Number < From || Number > To)
+                cout << ErrorMessage << endl;
 
         } while (Number < From || Number > To);
         return Number;
