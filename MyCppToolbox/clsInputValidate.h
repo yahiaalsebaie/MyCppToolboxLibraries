@@ -11,6 +11,9 @@ using namespace std;
 class clsInputValidate
 
 {
+private:
+
+
 public:
 
     // -----------------------------------------------------------------------
@@ -18,6 +21,7 @@ public:
     // -----------------------------------------------------------------------
     static int ReadNumber(string Message = "Please enter a number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ")
     {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
         cout << Message;
         cin >> Number;
@@ -151,7 +155,7 @@ public:
     //  Integer within [From, To] inclusive
     // -----------------------------------------------------------------------
 
-    static int ReadNumberInRange(int From,int To, string InputMessage = "Enter number: " , string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
+    static int ReadNumberInRange(int From, int To, string InputMessage = "Enter number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
     {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         int Number = 0;
@@ -174,7 +178,7 @@ public:
         return Number;
     }
     //Double Number 
-    static double ReadDblNumberBetween(double From, double To, string InputMessage = "Enter number: " , string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
+    static double ReadDblNumberBetween(double From, double To, string InputMessage = "Enter number: ", string ErrorMessage = "Invalid Number, Enter a valid one : ", bool   AutoRangeMessage = true)
     {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         double Number = 0;
@@ -234,9 +238,9 @@ public:
     }
 
 
-// -----------------------------------------------------------------------
-//  is Number Between 2 numbers within [From, To] inclusive
-// -----------------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    //  is Number Between 2 numbers within [From, To] inclusive
+    // -----------------------------------------------------------------------
 
     static bool IsNumberBetween(int Number, int From, int To, bool IncludedRangedNumbers = false)
     {
